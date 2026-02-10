@@ -39,7 +39,14 @@ def setup_rag_chain():
     vector_db = load_vector_db()
     
     if not vector_db:
-        st.error("Vector database not found. Please run setup_db.py first or check your data directories.")
+        # Auto-build vector DB if missing (for deployment)
+        with st.spinner("Building vector database... this may take a moment"):
+             import setup_db
+             setup_db.create_vector_db()
+             vector_db = load_vector_db()
+             
+    if not vector_db:
+        st.error("Failed to load or create vector database.")
         return None
 
     retriever = vector_db.as_retriever(search_kwargs={"k": 2})
