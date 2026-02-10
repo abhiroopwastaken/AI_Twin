@@ -1,0 +1,24 @@
+Role: Software Development Engineer
+Organization: Deloitte
+Experience: 2.5 years
+
+Responsibilities:
+Worked on enterprise-grade software solutions.
+Contributed to AI proof-of-concepts during internship.
+Collaborated with cross-functional teams to improve system reliability and scalability.
+
+Role: Software Development Engineer II
+Organization: Clearwater Analytics
+
+Responsibilities:
+Working in the FinTech domain on modernizing financial software systems.
+Handling migration of legacy products and providing maintenance support for critical applications.
+
+Leadership Experience:
+Co-lead of Microsoft Learn Student Chapter, coordinating technical sessions and managing collaborations with external partners.
+
+Volunteer Experience:
+Worked with PWS to teach underprivileged children and contributed to environmental sustainability initiatives such as tree planting and biodiversity awareness.
+
+Academic Experience:
+Currently pursuing MBA with focus on Information Management, integrating business strategy with technical expertise.

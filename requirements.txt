@@ -1,0 +1,10 @@
+langchain
+langchain-community
+langchain-huggingface
+faiss-cpu
+sentence-transformers
+streamlit
+watchdog
+huggingface-hub
+python-dotenv
+urllib3<2.0.0

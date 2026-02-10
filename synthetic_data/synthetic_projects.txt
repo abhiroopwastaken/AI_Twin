@@ -1,0 +1,19 @@
+[SYNTHETIC DATA]
+
+Project: AI-Powered Resume Intelligence Platform
+Description: Designed a conceptual AI platform that analyzes resumes and recommends role-fit, skill gaps, and learning paths using LLMs and RAG pipelines.
+
+Project: FinTech Risk Analysis Assistant
+Description: Created a simulated AI assistant for financial risk teams that answers policy and compliance queries using internal documents via RAG.
+
+Project: Product Discovery Assistant
+Description: Built a prototype tool that synthesizes customer feedback and feature requests into actionable product insights for product managers.
+
+Project: AI Career Guidance Assistant
+Description: Conceptualized an AI assistant that evaluates a user’s technical and managerial background and suggests suitable career paths using structured knowledge bases and RAG techniques.
+
+Project: FinTech Knowledge Copilot
+Description: Designed a simulated AI copilot for FinTech professionals that answers questions related to financial systems, compliance concepts, and operational workflows using document retrieval.
+
+Project: Product Strategy Simulation Tool
+Description: Developed a hypothetical tool that assists product managers in evaluating feature trade-offs by combining user feedback, business constraints, and technical feasibility through AI-driven analysis.

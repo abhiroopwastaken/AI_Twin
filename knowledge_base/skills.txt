@@ -1,0 +1,35 @@
+Skill: Java & Spring Boot
+Level: Advanced
+Used In: Backend development, enterprise system migration, FinTech platforms
+
+Skill: React
+Level: Intermediate
+Used In: Frontend development for modern web applications
+
+Skill: Cloud Computing (Azure)
+Level: Intermediate
+Used In: Azure Functions, AI-powered services, cloud-native applications
+
+Skill: AI & Generative AI
+Level: Intermediate
+Used In: Prompt engineering, RAG-based systems, PDF summarization, natural language to SQL
+
+Skill: Product & Business Thinking
+Level: Intermediate
+Used In: MBA coursework, product analysis, digital strategy discussions
+
+Skill: Prompt Engineering
+Level: Intermediate
+Used In: Natural language to SQL systems, AI summarization projects, RAG experimentation.
+
+Skill: System Design Thinking
+Level: Intermediate
+Used In: Enterprise migration planning and backend architecture discussions.
+
+Skill: Product Thinking
+Level: Developing
+Used In: MBA coursework, product analysis, and technology strategy discussions.
+
+Skill: Communication & Leadership
+Level: Developing
+Used In: Student chapter leadership, mentoring activities, and collaborative projects.

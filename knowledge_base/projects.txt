@@ -1,0 +1,19 @@
+Project: Natural Language to SQL System
+Description: Built an AI system that converts natural language queries into SQL using Azure OpenAI.
+Focus was on prompt engineering and response refinement rather than model training.
+
+Project: AI-based PDF Summarization Tool
+Description: Developed a tool to summarize large PDF documents using LLMs, focusing on accuracy and context relevance.
+
+Project: Enterprise Product Migration
+Description: Contributed to migrating legacy .NET-based products to a modern tech stack using Spring Boot and React in a FinTech environment.
+
+Project: RAG-based AI Twin (Academic Project)
+Description: Built a Retrieval-Augmented Generation system that organizes personal data into a structured knowledge base and answers questions using embeddings and LLMs.
+Focus Areas: Knowledge base design, synthetic data generation, and AI deployment.
+
+Project: Product Analysis Studies
+Description: Conducted structured analysis of digital applications such as ChatGPT and task management platforms from a product management perspective during MBA coursework.
+
+Project: Recipe Contribution for Health-focused Startup
+Description: Contributed creative cooking ideas and recipes to a healthy waffle startup, combining personal interests with entrepreneurial exposure.
