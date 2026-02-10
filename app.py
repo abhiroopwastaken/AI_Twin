@@ -41,16 +41,12 @@ def setup_rag_chain():
     if not vector_db:
         # Auto-build vector DB if missing (for deployment)
         with st.spinner("Building vector database... this may take a moment"):
-             # DEBUG: Check file system
-             st.info(f"CWD: {os.getcwd()}")
-             if os.path.exists("knowledge_base"):
-                 st.info(f"KB found: {os.listdir('knowledge_base')}")
-             else:
-                 st.error("knowledge_base directory NOT found!")
-
              try:
                  import setup_db
                  setup_db.create_vector_db()
+                 
+                 # IMPORTANT: Clear cache to force reload of the new DB
+                 load_vector_db.clear()
                  vector_db = load_vector_db()
              except Exception as e:
                  st.error(f"Error building vector DB: {str(e)}")
