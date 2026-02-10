@@ -19,7 +19,53 @@ SYNTHETIC_DATA_DIR = "synthetic_data"
 VECTOR_DB_PATH = "vector_db"
 
 # Set page config
-st.set_page_config(page_title="AI Twin", page_icon="🤖", layout="wide")
+st.set_page_config(page_title="Abhiroop's AI Twin", page_icon="🧠", layout="wide")
+
+# Custom CSS for Premium UI
+st.markdown("""
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+    
+    html, body, [class*="css"] {
+        font-family: 'Inter', sans-serif;
+    }
+    
+    .stApp {
+        background-color: #0e1117;
+    }
+    
+    h1 {
+        color: #f0f2f6;
+        font-weight: 600;
+    }
+    
+    .stChatMessage {
+        background-color: #262730;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .stChatMessage[data-testid="stChatMessageUser"] {
+        background-color: #2b313e;
+        border-left: 5px solid #4a90e2;
+    }
+    
+    .stChatMessage[data-testid="stChatMessageAssistant"] {
+        background-color: #1c1e24;
+        border-left: 5px solid #ff4b4b;
+    }
+    
+    .stSidebar {
+        background-color: #161a23;
+    }
+    
+    /* Hide Streamlit default elements */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    
+</style>
+""", unsafe_allow_html=True)
 
 @st.cache_resource
 def load_vector_db():
@@ -131,7 +177,10 @@ def get_profile_summary():
         return "Profile information not available."
 
 # Main App UI
-st.title("🤖 AI Twin: Digital Representation")
+# Main App UI
+st.title("Abhiroop Agarwal's AI Twin")
+st.markdown("ask me anything about my professional background, skills, and projects.")
+st.markdown("---")
 
 # Sidebar
 with st.sidebar:
