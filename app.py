@@ -61,10 +61,24 @@ def setup_rag_chain():
     
     # User requested openai/gpt-oss-20b
     repo_id = "openai/gpt-oss-20b"
+    # Try to get token from environment or streamlit secrets
     api_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+    if not api_token and "HUGGINGFACEHUB_API_TOKEN" in st.secrets:
+        api_token = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
     
     if not api_token:
-        st.warning("HUGGINGFACEHUB_API_TOKEN not found. The model may not work correctly.")
+        st.error("Missing Hugging Face Token.")
+        st.info("""
+        **To fix this on Streamlit Cloud:**
+        1. Go to your App Dashboard
+        2. Click 'Manage app' -> 'Settings' -> 'Secrets'
+        3. Add the following:
+           ```toml
+           HUGGINGFACEHUB_API_TOKEN = "hf_..."
+           ```
+        4. Reboot the app.
+        """)
+        st.stop()
 
     try:
         # Initialize Endpoint
