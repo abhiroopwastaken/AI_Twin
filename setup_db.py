@@ -10,30 +10,34 @@ SYNTHETIC_DATA_DIR = "synthetic_data"
 VECTOR_DB_PATH = "vector_db"
 
 def load_documents():
-    """Load documents from knowledge_base and synthetic_data directories."""
+    """Load documents from knowledge_base and synthetic_data directories manually."""
     documents = []
     
-    # Load from knowledge_base
-    if os.path.exists(KNOWLEDGE_BASE_DIR):
-        print(f"Loading documents from {KNOWLEDGE_BASE_DIR}...")
-        loader = DirectoryLoader(KNOWLEDGE_BASE_DIR, glob="*.txt", loader_cls=TextLoader)
-        documents.extend(loader.load())
-        
-    # Load from synthetic_data
-    if os.path.exists(SYNTHETIC_DATA_DIR):
-        print(f"Loading documents from {SYNTHETIC_DATA_DIR}...")
-        loader = DirectoryLoader(SYNTHETIC_DATA_DIR, glob="*.txt", loader_cls=TextLoader)
-        documents.extend(loader.load())
-        
-    print(f"Loaded {len(documents)} documents.")
+    dirs_to_scan = [KNOWLEDGE_BASE_DIR, SYNTHETIC_DATA_DIR]
+    
+    for directory in dirs_to_scan:
+        if os.path.exists(directory):
+            print(f"Scanning {directory}...")
+            files = os.listdir(directory)
+            for filename in files:
+                if filename.endswith(".txt"):
+                    path = os.path.join(directory, filename)
+                    try:
+                        loader = TextLoader(path, encoding='utf-8')
+                        documents.extend(loader.load())
+                        print(f"Loaded {filename}")
+                    except Exception as e:
+                         # Raise error so it shows in app.py
+                         raise Exception(f"Failed to load {path}: {str(e)}")
+                         
+    print(f"Loaded {len(documents)} documents total.")
     return documents
 
 def create_vector_db():
     print("Starting vector DB creation...")
     documents = load_documents()
     if not documents:
-        print("No documents found. Please check data directories.")
-        return
+        raise Exception("No documents loaded! Check knowledge_base folder permissions or content.")
         
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
     texts = text_splitter.split_documents(documents)
