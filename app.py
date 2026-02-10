@@ -184,6 +184,11 @@ st.markdown("---")
 
 # Sidebar
 with st.sidebar:
+    # Profile Image
+    profile_image_path = os.path.join("media", "Passpor_image.jpeg")
+    if os.path.exists(profile_image_path):
+        st.image(profile_image_path, width=200)
+        
     st.header("Profile Summary")
     st.text_area("About Me", value=get_profile_summary(), height=400, disabled=True)
     st.markdown("---")
