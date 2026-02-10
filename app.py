@@ -187,7 +187,9 @@ with st.sidebar:
     # Profile Image
     profile_image_path = os.path.join("media", "Passpor_image.jpeg")
     if os.path.exists(profile_image_path):
-        st.image(profile_image_path, width=200)
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            st.image(profile_image_path, use_column_width=True)
         
     st.header("Profile Summary")
     st.text_area("About Me", value=get_profile_summary(), height=400, disabled=True)
