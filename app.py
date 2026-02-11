@@ -103,7 +103,7 @@ def setup_rag_chain():
         st.info("Debugging: Ensure 'knowledge_base' folder exists and contains .txt files.")
         return None
 
-    retriever = vector_db.as_retriever(search_kwargs={"k": 2})
+    retriever = vector_db.as_retriever(search_kwargs={"k": 4})
     
     # User requested openai/gpt-oss-20b (Reverting from unsupported Step-3.5-Flash)
     repo_id = "openai/gpt-oss-20b"
@@ -297,6 +297,8 @@ with tab2:
                     recruiter_prompt = """
                     Act as an expert technical recruiter. Based on the context provided about Abhiroop Agarwal, generate a "Recruiter Brief".
                     
+                    Use the provided context to find his Location, Education, and Key Role.
+                    
                     Format the response exactly as follows using Markdown:
                     
                     ### Recruiter Brief: Abhiroop Agarwal
@@ -319,7 +321,7 @@ with tab2:
                     | **Education** | [Degree/Institute] |
                     | **Key Role** | [Most relevant past role] |
                     | **Focus Area** | [Product/Tech/Strategy] |
-                    | **Location** | [City/Country if known, otherwise omitted] |
+                    | **Location** | [City from profile] |
                     """
                     
                     response = rag_chain.invoke(recruiter_prompt)
