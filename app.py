@@ -331,7 +331,7 @@ with tab2:
 
 with tab3:
     st.header("Download CV")
-    resume_path = "resume.pdf"
+    resume_path = os.path.join("media", "Abhiroop_Agarwal_Resume.pdf")
     if os.path.exists(resume_path):
         with open(resume_path, "rb") as f:
             pdf_data = f.read()
@@ -342,7 +342,7 @@ with tab3:
             mime="application/pdf",
         )
     else:
-        st.warning("Resume file not found. Please add 'resume.pdf' to the project directory.")
+        st.warning("Resume file not found. Please add 'Abhiroop_Agarwal_Resume.pdf' to the 'media' directory.")
 
 with tab4:
     st.header("Express Interest")
