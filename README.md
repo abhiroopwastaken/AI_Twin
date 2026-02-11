@@ -1,16 +1,16 @@
-# AI Twin - Abhiroop Agarwal 🤖
+# AI Twin - Abhiroop Agarwal 
 
 Your intelligent, professional digital persona. This AI Twin is designed to represent **Abhiroop Agarwal**, answering questions about his background, skills, projects, and career aspirations, interacting just like a knowledgeable portfolio assistant.
 
-## 🌟 Features
+##  Features
 
 *   **Interactive Chat**: Ask anything about Abhiroop's professional journey. The AI responds using a Retrieval-Augmented Generation (RAG) pipeline grounded in his actual profile data.
-*   **Recruiter View ⚡**: One-click generation of a "Recruiter Brief" — a concise professional summary highlighting hard skills, soft skills, and key stats.
-*   **Resume Download 📄**: Easy access to the latest PDF resume.
-*   **Express Interest 📬**: A built-in contact form for recruiters and collaborators to reach out directly.
-*   **Admin Tools 🔧**: Server-side controls to manual refresh the knowledge base (Vector DB) ensuring the AI is always up-to-date.
+*   **Recruiter View**: One-click generation of a "Recruiter Brief" — a concise professional summary highlighting hard skills, soft skills, and key stats.
+*   **Resume Download**: Easy access to the latest PDF resume.
+*   **Express Interest**: A built-in contact form for recruiters and collaborators to reach out directly.
+*   **Admin Tools**: Server-side controls to manual refresh the knowledge base (Vector DB) ensuring the AI is always up-to-date.
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 *   **Frontend**: [Streamlit](https://streamlit.io/) (Python-based UI).
 *   **LLM Integration**: [LangChain](https://www.langchain.com/) + Hugging Face Inference API.
@@ -18,7 +18,7 @@ Your intelligent, professional digital persona. This AI Twin is designed to repr
 *   **Embeddings**: `all-MiniLM-L6-v2` (Sentence Transformers).
 *   **Model**: Open-source models (via Hugging Face).
 
-## 🚀 Installation & Setup
+##  Installation & Setup
 
 ### Prerequisites
 *   Python 3.9+
@@ -68,10 +68,6 @@ Your intelligent, professional digital persona. This AI Twin is designed to repr
 *   `vector_db/`: Generated FAISS index files (the "Brain").
 *   `media/`: Images and static assets (Resume, Profile Pic).
 
-## 🤝 Contributing
-
-Feel free to fork this repository and customize it to create your own AI Twin!
-
-## 📜 License
+##  License
 
 [MIT](LICENSE)
