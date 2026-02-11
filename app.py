@@ -285,7 +285,49 @@ with tab1:
 
 with tab2:
     st.header("Recruiter View")
-    st.info("Coming soon: Auto-generated professional brief.")
+    st.markdown("**AI-Generated Recruiter Brief**")
+    st.markdown("This tab generates a professional, AI-powered recruiter summary of Abhiroop — covering his skills, fit, and standout qualities. Click **Generate** to create it fresh.")
+    
+    if st.button("⚡ Generate Recruiter Brief"):
+        with st.spinner("Analyzing profile and generating brief..."):
+            rag_chain = setup_rag_chain()
+            if rag_chain:
+                try:
+                    # Specific prompt for recruiter brief
+                    recruiter_prompt = """
+                    Act as an expert technical recruiter. Based on the context provided about Abhiroop Agarwal, generate a "Recruiter Brief".
+                    
+                    Format the response exactly as follows using Markdown:
+                    
+                    ### Recruiter Brief: Abhiroop Agarwal
+                    
+                    **Professional Snapshot**: [A compelling 3-4 sentence summary of his background, experience, and unique value proposition.]
+                    
+                    **Top 3 Hard Skills with Evidence**:
+                    1. **[Skill 1]**: [Brief evidence/project]
+                    2. **[Skill 2]**: [Brief evidence/project]
+                    3. **[Skill 3]**: [Brief evidence/project]
+                    
+                    **Top 3 Soft Skills with Evidence**:
+                    1. **[Skill 1]**: [Brief evidence/context]
+                    2. **[Skill 2]**: [Brief evidence/context]
+                    3. **[Skill 3]**: [Brief evidence/context]
+                    
+                    **Quick Stats**:
+                    | Metric | Value |
+                    | :--- | :--- |
+                    | **Education** | [Degree/Institute] |
+                    | **Key Role** | [Most relevant past role] |
+                    | **Focus Area** | [Product/Tech/Strategy] |
+                    | **Location** | [City/Country if known, otherwise omitted] |
+                    """
+                    
+                    response = rag_chain.invoke(recruiter_prompt)
+                    st.markdown(response)
+                except Exception as e:
+                    st.error(f"Error generating brief: {str(e)}")
+            else:
+                st.error("RAG system not initialized.")
 
 with tab3:
     st.header("Download CV")
