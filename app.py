@@ -357,10 +357,6 @@ with tab4:
         
         if submitted:
             if name and email and message:
-                # Save to CSV
-                data = f"{name},{email},{role},{message}\n"
-                with open("inquiries.csv", "a") as f:
-                    f.write(data)
                 st.success("Thanks for reaching out! I'll get back to you soon.")
             else:
                 st.error("Please fill in all required fields.")
