@@ -208,7 +208,7 @@ st.markdown("---")
 # Sidebar
 with st.sidebar:
     # Profile Image
-    profile_image_path = os.path.join("media", "Passpor_image.jpeg")
+    profile_image_path = os.path.join("media", "Passport_image.jpeg")
     if os.path.exists(profile_image_path):
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
