@@ -268,3 +268,14 @@ if not st.session_state.messages:
 # Handle Input
 if prompt := st.chat_input("Ask me about my experience, skills, or projects..."):
     handle_user_input(prompt)
+
+# JS to scroll to bottom
+st.markdown(
+    """
+    <script>
+    var body = window.parent.document.querySelector(".main");
+    body.scrollTop = body.scrollHeight;
+    </script>
+    """,
+    unsafe_allow_html=True
+)
