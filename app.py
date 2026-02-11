@@ -151,7 +151,7 @@ def setup_rag_chain():
     CORE RULES:
     - Only use the provided context from the knowledge base.
     - Do not invent facts that are not present in the context.
-    - If information is missing, say: "I do not have enough information about that yet."
+    - If information is missing, try to answer from the facts available.
     - Clearly distinguish real and synthetic experiences when relevant.
     - Maintain factual accuracy and avoid exaggeration.
 
@@ -226,50 +226,45 @@ if "messages" not in st.session_state:
 def handle_user_input(user_question):
     """Handle user input and generate response."""
     st.session_state.messages.append({"role": "user", "content": user_question})
-    with st.chat_message("user"):
-        st.markdown(user_question)
-
-    with st.chat_message("assistant"):
-        with st.spinner("Thinking..."):
-            rag_chain = setup_rag_chain()
-            if rag_chain:
-                try:
-                    response = rag_chain.invoke(user_question)
-                    st.markdown(response)
-                    st.session_state.messages.append({"role": "assistant", "content": response})
-                except Exception as e:
-                    st.error("An error occurred.")
-                    st.code(traceback.format_exc())
-            else:
-                 st.error("RAG system not initialized.")
+    # Generate response
+    rag_chain = setup_rag_chain()
+    if rag_chain:
+        try:
+            response = rag_chain.invoke(user_question)
+            st.session_state.messages.append({"role": "assistant", "content": response})
+        except Exception as e:
+            st.error("An error occurred.")
+            st.code(traceback.format_exc())
+    else:
+            st.error("RAG system not initialized.")
+    # Rerun to update display
+    st.rerun()
 
 # Display Chat History
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# Sample Questions (Chips/Buttons)
-st.markdown("###### Suggested Questions:")
-selected_question = None
+# Sample Questions (Only show if no messages)
+if not st.session_state.messages:
+    st.markdown("###### Suggested Questions:")
+    
+    col1, col2 = st.columns(2)
 
-col1, col2 = st.columns(2)
+    with col1:
+        if st.button("Based on Abhiroop’s background, what roles is he best suited for and why?", use_container_width=True):
+            handle_user_input("Based on Abhiroop’s background, what roles is he best suited for and why?")
+        if st.button("How has Abhiroop applied AI or generative AI in his work?", use_container_width=True):
+            handle_user_input("How has Abhiroop applied AI or generative AI in his work?")
+        if st.button("Summarize Abhiroop’s professional journey and long-term vision.", use_container_width=True):
+            handle_user_input("Summarize Abhiroop’s professional journey and long-term vision.")
 
-with col1:
-    if st.button("Based on Abhiroop’s background, what roles is he best suited for and why?", use_container_width=True):
-        selected_question = "Based on Abhiroop’s background, what roles is he best suited for and why?"
-    if st.button("How has Abhiroop applied AI or generative AI in his work?", use_container_width=True):
-        selected_question = "How has Abhiroop applied AI or generative AI in his work?"
-    if st.button("Summarize Abhiroop’s professional journey and long-term vision.", use_container_width=True):
-        selected_question = "Summarize Abhiroop’s professional journey and long-term vision."
-
-with col2:
-    if st.button("What differentiates Abhiroop from other software engineers?", use_container_width=True):
-        selected_question = "What differentiates Abhiroop from other software engineers?"
-    if st.button("What leadership experiences demonstrate Abhiroop’s growth potential?", use_container_width=True):
-        selected_question = "What leadership experiences demonstrate Abhiroop’s growth potential?"
+    with col2:
+        if st.button("What differentiates Abhiroop from other software engineers?", use_container_width=True):
+           handle_user_input("What differentiates Abhiroop from other software engineers?")
+        if st.button("What leadership experiences demonstrate Abhiroop’s growth potential?", use_container_width=True):
+            handle_user_input("What leadership experiences demonstrate Abhiroop’s growth potential?")
 
 # Handle Input
 if prompt := st.chat_input("Ask me about my experience, skills, or projects..."):
     handle_user_input(prompt)
-elif selected_question:
-    handle_user_input(selected_question)
