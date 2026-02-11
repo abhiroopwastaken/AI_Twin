@@ -223,21 +223,18 @@ with st.sidebar:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
-
-if prompt := st.chat_input("Ask me about my experience, skills, or projects..."):
-    st.session_state.messages.append({"role": "user", "content": prompt})
+def handle_user_input(user_question):
+    """Handle user input and generate response."""
+    st.session_state.messages.append({"role": "user", "content": user_question})
     with st.chat_message("user"):
-        st.markdown(prompt)
+        st.markdown(user_question)
 
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
             rag_chain = setup_rag_chain()
             if rag_chain:
                 try:
-                    response = rag_chain.invoke(prompt)
+                    response = rag_chain.invoke(user_question)
                     st.markdown(response)
                     st.session_state.messages.append({"role": "assistant", "content": response})
                 except Exception as e:
@@ -245,3 +242,32 @@ if prompt := st.chat_input("Ask me about my experience, skills, or projects...")
                     st.code(traceback.format_exc())
             else:
                  st.error("RAG system not initialized.")
+
+# Display Chat History
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
+
+# Sample Questions (Chips/Buttons)
+st.markdown("###### Suggested Questions:")
+col1, col2, col3, col4 = st.columns(4)
+selected_question = None
+
+with col1:
+    if st.button("Tell me about yourself"):
+        selected_question = "Tell me about yourself and your background."
+with col2:
+    if st.button("What are your skills?"):
+        selected_question = "What are your specific technical skills?"
+with col3:
+    if st.button("Key Projects"):
+        selected_question = "Tell me about your key projects."
+with col4:
+    if st.button("Contact Info"):
+        selected_question = "How can I contact you?"
+
+# Handle Input
+if prompt := st.chat_input("Ask me about my experience, skills, or projects..."):
+    handle_user_input(prompt)
+elif selected_question:
+    handle_user_input(selected_question)
