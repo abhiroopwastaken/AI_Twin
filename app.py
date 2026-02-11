@@ -212,7 +212,7 @@ with st.sidebar:
     if os.path.exists(profile_image_path):
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
-            st.image(profile_image_path, use_container_width=True)
+            st.image(profile_image_path, width='stretch')
         
     st.header("Profile Summary")
     st.text_area("About Me", value=get_profile_summary(), height=400, disabled=True)
@@ -255,17 +255,17 @@ with tab1:
     col1, col2 = st.columns(2)
 
     with col1:
-        if st.button("Based on Abhiroop’s background, what roles is he best suited for and why?", use_container_width=True):
+        if st.button("Based on Abhiroop’s background, what roles is he best suited for and why?", width='stretch'):
             handle_user_input("Based on Abhiroop’s background, what roles is he best suited for and why?")
-        if st.button("How has Abhiroop applied AI or generative AI in his work?", use_container_width=True):
+        if st.button("How has Abhiroop applied AI or generative AI in his work?", width='stretch'):
             handle_user_input("How has Abhiroop applied AI or generative AI in his work?")
-        if st.button("Summarize Abhiroop’s professional journey and long-term vision.", use_container_width=True):
+        if st.button("Summarize Abhiroop’s professional journey and long-term vision.", width='stretch'):
             handle_user_input("Summarize Abhiroop’s professional journey and long-term vision.")
 
     with col2:
-        if st.button("What differentiates Abhiroop from other software engineers?", use_container_width=True):
+        if st.button("What differentiates Abhiroop from other software engineers?", width='stretch'):
            handle_user_input("What differentiates Abhiroop from other software engineers?")
-        if st.button("What leadership experiences demonstrate Abhiroop’s growth potential?", use_container_width=True):
+        if st.button("What leadership experiences demonstrate Abhiroop’s growth potential?", width='stretch'):
             handle_user_input("What leadership experiences demonstrate Abhiroop’s growth potential?")
 
     # Handle Input
