@@ -131,7 +131,7 @@ def setup_rag_chain():
         llm = HuggingFaceEndpoint(
             repo_id=repo_id,
             task="text-generation",
-            max_new_tokens=512,
+            max_new_tokens=2048,
             do_sample=False,
             repetition_penalty=1.03,
             huggingfacehub_api_token=api_token
