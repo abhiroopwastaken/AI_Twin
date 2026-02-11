@@ -215,8 +215,19 @@ with st.sidebar:
         with col2:
             st.image(profile_image_path, width='stretch')
         
-    st.header("Profile Summary")
     st.text_area("About Me", value=get_profile_summary(), height=400, disabled=True)
+
+    st.markdown("---")
+    with st.expander("🔧 Admin Tools"):
+        if st.button("🔄 Rebuild Knowledge Base"):
+            with st.spinner("Rebuilding Vector Database..."):
+                try:
+                    import setup_db
+                    setup_db.create_vector_db()
+                    load_vector_db.clear()
+                    st.success("Brain rebuilt successfully! Refresh the page.")
+                except Exception as e:
+                    st.error(f"Error: {e}")
     st.markdown("---")
     st.info("This AI allows you to ask questions about my professional background, skills, and projects.")
 
