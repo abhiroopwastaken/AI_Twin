@@ -219,62 +219,78 @@ with st.sidebar:
     st.markdown("---")
     st.info("This AI allows you to ask questions about my professional background, skills, and projects.")
 
-# Chat Interface
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+# Tabs
+tab1, tab2, tab3, tab4 = st.tabs(["Ask Me Anything", "Recruiter View", "Download CV", "Express Interest"])
 
-def handle_user_input(user_question):
-    """Handle user input and generate response."""
-    st.session_state.messages.append({"role": "user", "content": user_question})
-    # Generate response
-    rag_chain = setup_rag_chain()
-    if rag_chain:
-        try:
-            response = rag_chain.invoke(user_question)
-            st.session_state.messages.append({"role": "assistant", "content": response})
-        except Exception as e:
-            st.error("An error occurred.")
-            st.code(traceback.format_exc())
-    else:
-            st.error("RAG system not initialized.")
-    # Rerun to update display
-    st.rerun()
+with tab1:
+    # Chat Interface
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
 
-# Display Chat History
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
+    def handle_user_input(user_question):
+        """Handle user input and generate response."""
+        st.session_state.messages.append({"role": "user", "content": user_question})
+        # Generate response
+        rag_chain = setup_rag_chain()
+        if rag_chain:
+            try:
+                response = rag_chain.invoke(user_question)
+                st.session_state.messages.append({"role": "assistant", "content": response})
+            except Exception as e:
+                st.error("An error occurred.")
+                st.code(traceback.format_exc())
+        else:
+                st.error("RAG system not initialized.")
+        # Rerun to update display
+        st.rerun()
 
-# Sample Questions (Always visible)
-st.markdown("###### Suggested Questions:")
+    # Display Chat History
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
 
-col1, col2 = st.columns(2)
+    # Sample Questions (Always visible)
+    st.markdown("###### Suggested Questions:")
 
-with col1:
-    if st.button("Based on Abhiroop’s background, what roles is he best suited for and why?", use_container_width=True):
-        handle_user_input("Based on Abhiroop’s background, what roles is he best suited for and why?")
-    if st.button("How has Abhiroop applied AI or generative AI in his work?", use_container_width=True):
-        handle_user_input("How has Abhiroop applied AI or generative AI in his work?")
-    if st.button("Summarize Abhiroop’s professional journey and long-term vision.", use_container_width=True):
-        handle_user_input("Summarize Abhiroop’s professional journey and long-term vision.")
+    col1, col2 = st.columns(2)
 
-with col2:
-    if st.button("What differentiates Abhiroop from other software engineers?", use_container_width=True):
-       handle_user_input("What differentiates Abhiroop from other software engineers?")
-    if st.button("What leadership experiences demonstrate Abhiroop’s growth potential?", use_container_width=True):
-        handle_user_input("What leadership experiences demonstrate Abhiroop’s growth potential?")
+    with col1:
+        if st.button("Based on Abhiroop’s background, what roles is he best suited for and why?", use_container_width=True):
+            handle_user_input("Based on Abhiroop’s background, what roles is he best suited for and why?")
+        if st.button("How has Abhiroop applied AI or generative AI in his work?", use_container_width=True):
+            handle_user_input("How has Abhiroop applied AI or generative AI in his work?")
+        if st.button("Summarize Abhiroop’s professional journey and long-term vision.", use_container_width=True):
+            handle_user_input("Summarize Abhiroop’s professional journey and long-term vision.")
 
-# Handle Input
-if prompt := st.chat_input("Ask me about my experience, skills, or projects..."):
-    handle_user_input(prompt)
+    with col2:
+        if st.button("What differentiates Abhiroop from other software engineers?", use_container_width=True):
+           handle_user_input("What differentiates Abhiroop from other software engineers?")
+        if st.button("What leadership experiences demonstrate Abhiroop’s growth potential?", use_container_width=True):
+            handle_user_input("What leadership experiences demonstrate Abhiroop’s growth potential?")
 
-# JS to scroll to bottom
-st.markdown(
-    """
-    <script>
-    var body = window.parent.document.querySelector(".main");
-    body.scrollTop = body.scrollHeight;
-    </script>
-    """,
-    unsafe_allow_html=True
-)
+    # Handle Input
+    if prompt := st.chat_input("Ask me about my experience, skills, or projects..."):
+        handle_user_input(prompt)
+
+    # JS to scroll to bottom (Only for Tab 1)
+    st.markdown(
+        """
+        <script>
+        var body = window.parent.document.querySelector(".main");
+        body.scrollTop = body.scrollHeight;
+        </script>
+        """,
+        unsafe_allow_html=True
+    )
+
+with tab2:
+    st.header("Recruiter View")
+    st.info("Coming soon: Auto-generated professional brief.")
+
+with tab3:
+    st.header("Download CV")
+    st.info("Resume download will be available here.")
+
+with tab4:
+    st.header("Express Interest")
+    st.info("Contact form coming soon.")
