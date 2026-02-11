@@ -331,8 +331,36 @@ with tab2:
 
 with tab3:
     st.header("Download CV")
-    st.info("Resume download will be available here.")
+    resume_path = "resume.pdf"
+    if os.path.exists(resume_path):
+        with open(resume_path, "rb") as f:
+            pdf_data = f.read()
+        st.download_button(
+            label="📄 Download Resume (PDF)",
+            data=pdf_data,
+            file_name="Abhiroop_Agarwal_Resume.pdf",
+            mime="application/pdf",
+        )
+    else:
+        st.warning("Resume file not found. Please add 'resume.pdf' to the project directory.")
 
 with tab4:
     st.header("Express Interest")
-    st.info("Contact form coming soon.")
+    st.write("Interested in collaborating? Fill out the form below!")
+    
+    with st.form("contact_form"):
+        name = st.text_input("Your Name")
+        email = st.text_input("Email Address")
+        role = st.selectbox("Role / Opportunity", ["Recruiter", "Freelance Project", "Collaboration", "Other"])
+        message = st.text_area("Message")
+        submitted = st.form_submit_button("Send Message")
+        
+        if submitted:
+            if name and email and message:
+                # Save to CSV
+                data = f"{name},{email},{role},{message}\n"
+                with open("inquiries.csv", "a") as f:
+                    f.write(data)
+                st.success("Thanks for reaching out! I'll get back to you soon.")
+            else:
+                st.error("Please fill in all required fields.")
