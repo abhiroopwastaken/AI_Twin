@@ -105,8 +105,8 @@ def setup_rag_chain():
 
     retriever = vector_db.as_retriever(search_kwargs={"k": 2})
     
-    # User requested openai/gpt-oss-20b
-    repo_id = "openai/gpt-oss-20b"
+    # User requested stepfun-ai/Step-3.5-Flash
+    repo_id = "stepfun-ai/Step-3.5-Flash"
     # Try to get token from environment or streamlit secrets
     api_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")
     if not api_token and "HUGGINGFACEHUB_API_TOKEN" in st.secrets:
