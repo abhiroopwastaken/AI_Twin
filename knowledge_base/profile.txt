@@ -4,6 +4,11 @@ Education:
 Bachelor of Engineering in Computer Science
 MBA (PGDM) with specialization in Information Management
 
+Contact:
+Phone - +91 9719003001
+Email - abhiroop.agarwal2000@gmail.com
+Location - Mumbai, Maharashtra, India
+
 Professional Background:
 Software Development Engineer with experience in FinTech and enterprise systems.
 Worked on migrating legacy .NET products to modern architectures using Spring Boot and React.
@@ -19,7 +24,8 @@ Career Goals:
 To transition into product management or tech strategy roles where I can combine technical depth with business decision-making and long-term impact.
 
 Extended Professional Summary:
-Abhiroop Agarwal is a software engineer transitioning into product management and technology strategy through an MBA in Information Management. His background combines enterprise software development with emerging interests in AI-driven digital products.
+Abhiroop Agarwal is currently pursuing his MBA from SPJIMR, before which he was a software engineer with experience in FinTech and enterprise systems. He has worked on migrating legacy .NET products to modern architectures using Spring Boot and React. 
+He has experience in AI-enabled solutions through internships and academic projects. He is currently transitioning into product management and technology strategy through an MBA in Information Management. His background combines enterprise software development with emerging interests in AI-driven digital products.
 
 Technical Identity:
 Strong foundation in backend engineering, cloud services, and applied AI systems. Experience working with legacy modernization, digital transformation, and FinTech software environments.
@@ -29,3 +35,7 @@ Believes in combining deep technical understanding with strategic thinking to bu
 
 Personal Traits:
 Analytical, reflective, and growth-oriented. Actively working on improving empathetic communication and leadership effectiveness.
+
+Certifications:
+- AWS Certified Solutions Architect - Associate
+- Azure AZ-900: Azure Fundamentals - Certified
