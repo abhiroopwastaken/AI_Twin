@@ -71,6 +71,16 @@ st.markdown("""
 def load_vector_db():
     """Load the existing vector database."""
     embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+    
+    # FORCE REBUILD ON STARTUP for deployment consistency
+    # This ensures the app always uses the latest text files in knowledge_base
+    try:
+        import setup_db
+        print("Forcing vector DB rebuild...")
+        setup_db.create_vector_db()
+    except Exception as e:
+        st.error(f"Failed to rebuild vector DB: {e}")
+    
     if os.path.exists(VECTOR_DB_PATH):
         return FAISS.load_local(VECTOR_DB_PATH, embeddings, allow_dangerous_deserialization=True)
     else:
