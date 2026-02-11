@@ -189,7 +189,7 @@ with st.sidebar:
     if os.path.exists(profile_image_path):
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
-            st.image(profile_image_path, use_column_width=True)
+            st.image(profile_image_path, use_container_width=True)
         
     st.header("Profile Summary")
     st.text_area("About Me", value=get_profile_summary(), height=400, disabled=True)
