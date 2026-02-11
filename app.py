@@ -250,21 +250,28 @@ for message in st.session_state.messages:
 
 # Sample Questions (Chips/Buttons)
 st.markdown("###### Suggested Questions:")
-col1, col2, col3, col4 = st.columns(4)
 selected_question = None
 
+# Row 1
+col1, col2, col3 = st.columns(3)
 with col1:
-    if st.button("Tell me about yourself"):
-        selected_question = "Tell me about yourself and your background."
+    if st.button("Best Suited Roles"):
+        selected_question = "Based on Abhiroop’s background, what roles is he best suited for and why?"
 with col2:
-    if st.button("What are your skills?"):
-        selected_question = "What are your specific technical skills?"
+    if st.button("Differentiators"):
+        selected_question = "What differentiates Abhiroop from other software engineers?"
 with col3:
-    if st.button("Key Projects"):
-        selected_question = "Tell me about your key projects."
+    if st.button("AI Experience"):
+        selected_question = "How has Abhiroop applied AI or generative AI in his work?"
+
+# Row 2
+col4, col5 = st.columns(2)
 with col4:
-    if st.button("Contact Info"):
-        selected_question = "How can I contact you?"
+    if st.button("Leadership Potential"):
+        selected_question = "What leadership experiences demonstrate Abhiroop’s growth potential?"
+with col5:
+    if st.button("Journey & Vision"):
+        selected_question = "Summarize Abhiroop’s professional journey and long-term vision."
 
 # Handle Input
 if prompt := st.chat_input("Ask me about my experience, skills, or projects..."):
