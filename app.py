@@ -191,15 +191,9 @@ def setup_rag_chain():
     
     prompt = ChatPromptTemplate.from_template(template)
 
-    # Inject profile text directly into context
-    def format_docs_with_profile(docs):
-        profile_text = get_profile_summary()
-        retrieved_text = "\n\n".join(doc.page_content for doc in docs)
-        return f"--- PROFILE DATA ---\n{profile_text}\n\n--- RETRIEVED KNOWLEDGE ---\n{retrieved_text}"
-
     # LCEL Chain
     rag_chain = (
-        {"context": retriever | format_docs_with_profile, "question": RunnablePassthrough()}
+        {"context": retriever | format_docs, "question": RunnablePassthrough()}
         | prompt
         | chat_model
         | StrOutputParser()
