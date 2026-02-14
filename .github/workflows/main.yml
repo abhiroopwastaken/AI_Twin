@@ -1,0 +1,17 @@
+name: Streamlit Keep Awake
+
+on:
+  schedule:
+    # Runs every 6 hours (Streamlit hibernates after ~12 hours of inactivity)
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # Allows you to run it manually for testing
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping my site
+        uses: Leocardoso94/is-my-site-up@v1
+        with:
+          # REPLACE WITH YOUR ACTUAL STREAMLIT URL
+          site: "https://abhiroop-ai-twin.streamlit.app"
